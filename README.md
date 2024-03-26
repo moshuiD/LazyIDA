@@ -1,6 +1,7 @@
 # LazyIDA
-Make your IDA Lazy!
-modify by moshui
+Make your IDA Lazy!  
+modify by moshui.  
+I removed the original dependency on pyqt and **instead** used a simple **pyperclip**  
 # Install
 0. make sure have "pyperclip".If not must use `pip install pyperclip` to install it.  
 1. put `LazyIDA.py` into `plugins` folder under your IDA Pro installation path.
