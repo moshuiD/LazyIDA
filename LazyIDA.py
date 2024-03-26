@@ -4,8 +4,7 @@ from struct import unpack
 import idaapi
 import idautils
 import idc
-
-from PyQt5.Qt import QApplication
+import pyperclip
 
 ACTION_CONVERT = ["lazyida:convert%d" % i for i in range(10)]
 ACTION_SCANVUL = "lazyida:scanvul"
@@ -27,10 +26,13 @@ ARCH = 0
 BITS = 0
 
 def copy_to_clip(data):
-    QApplication.clipboard().setText(data)
+    #QApplication.clipboard().setText(data)
+    pyperclip.copy(data)
+
 
 def clip_text():
-    return QApplication.clipboard().text()
+    #return QApplication.clipboard().text()
+    return pyperclip.paste()
 
 def parse_location(loc):
     try:
@@ -472,7 +474,7 @@ class LazyIDA_t(idaapi.plugin_t):
         else:
             BITS = 16
 
-        print("LazyIDA (v1.0.0.3) plugin has been loaded.")
+        print("LazyIDA (v1.0.0.3 modify by moshui)  plugin has been loaded.")
 
         # Register menu actions
         menu_actions = (
@@ -511,9 +513,9 @@ class LazyIDA_t(idaapi.plugin_t):
         if idaapi.init_hexrays_plugin():
             addon = idaapi.addon_info_t()
             addon.id = "tw.l4ys.lazyida"
-            addon.name = "LazyIDA"
-            addon.producer = "Lays"
-            addon.url = "https://github.com/L4ys/LazyIDA"
+            addon.name = "LazyIDA(modify)"
+            addon.producer = "moshui"
+            addon.url = "https://github.com/moshuiD/LazyIDA"
             addon.version = "1.0.0.3"
             idaapi.register_addon(addon)
 
